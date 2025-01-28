@@ -1,0 +1,121 @@
+/* General styles */
+.background {
+    background-color: #341a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .shape {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 120px;
+    height: 120px;
+    background-color: #923737;
+    border-radius: 50%;
+    animation: moveShapes 5s infinite;
+  }
+  
+  .shape:nth-child(2) {
+    top: 30%;
+    left: 70%;
+    animation-duration: 7s;
+  }
+  
+  @keyframes moveShapes {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(50px, 50px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  form {
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    height: 350px;
+    z-index: 10;
+  }
+  
+  form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 80%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Error Message Styles */
+  .error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    animation: fadeOut 3s ease-out forwards; /* Error message fade out */
+  }
+
+  .message {
+  
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .message.success {
+    color: green;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .message.error {
+    color: red;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+  }
+  
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
