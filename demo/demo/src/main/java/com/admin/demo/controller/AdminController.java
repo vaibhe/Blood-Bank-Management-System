@@ -16,6 +16,8 @@ public class AdminController {
 
 
 
+
+    @CrossOrigin(origins = "http://localhost:3000") // Allow only this origin
     @GetMapping("/admins")
     public List<Admin> getAll(){
         return service.getAdmins();
@@ -26,17 +28,20 @@ public class AdminController {
         return service.getAdminsByid(myid);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/admins")
     public void addAdmin(@RequestBody  Admin admin){
         System.out.println(admin);
         service.addAdmin(admin);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/admins")
     public void updateAdmin(@RequestBody  Admin admin){
         service.updateAdmin(admin);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/admins/{adminId}")
     public void deleteAdmin(@PathVariable int adminId){
         service.deleteAdmin(adminId);
