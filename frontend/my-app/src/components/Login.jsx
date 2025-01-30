@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios"; // Import axios
 import "../CSS/login.css";
 
@@ -8,16 +9,17 @@ const LoginForm = () => {
   const [message, setMessage] = useState(""); // Single state for all messages
   const [messageType, setMessageType] = useState(""); // Type of message ('success' or 'error')
 
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission
 
-    // Updated regex: Allow only a-z, A-Z, 0-9 with a minimum of 6 characters
     const passwordRegex = /^[a-zA-Z0-9]{6,}$/;
 
     if (!username || !password) {
       setMessage("Please fill in both fields.");
       setMessageType("error");
-      setTimeout(() => setMessage(""), 3000); // Hide message after 3 seconds
+      setTimeout(() => setMessage(""), 3000);
       return;
     }
 
@@ -26,56 +28,47 @@ const LoginForm = () => {
         "Password must be at least 6 characters long and contain only letters (a-z, A-Z) and numbers (0-9)."
       );
       setMessageType("error");
-      setTimeout(() => setMessage(""), 3000); // Hide message after 3 seconds
+      setTimeout(() => setMessage(""), 3000);
       return;
     }
 
     setMessage(""); // Clear any previous messages
 
-    // Prepare the data to be sent
-    const formData = {
-      username: username,
-      password: password,
-    };
+    const formData = { username, password };
 
     try {
-      // Make the POST request to the Spring Boot backend
       const response = await axios.post("http://localhost:8080/login", formData);
 
-      // Show success message
       setMessage("Login successful!");
       setMessageType("success");
-      setTimeout(() => setMessage(""), 1000); // Hide success message after 1 second
+      setTimeout(() => setMessage(""), 1000);
 
-      // Handle success (for example, clear the form)
       console.log("Form submitted successfully:", response.data);
+
+      // Clear form
       setUsername("");
       setPassword("");
+
+      // Redirect to dashboard or any other page
+      navigate("/Admins"); // Change "/dashboard" to your desired route
     } catch (error) {
-      // Handle error
       console.error("There was an error submitting the form!", error);
-      setMessage("Something went wrong. Please try again.");
+      setMessage("Invalid credentials. Please try again.");
       setMessageType("error");
-      setTimeout(() => setMessage(""), 3000); // Hide error message after 3 seconds
+      setTimeout(() => setMessage(""), 3000);
     }
   };
 
   return (
-    
     <div className="background">
-     
       <div className="shape"></div>
       <div className="shape"></div>
-       
+
       <form onSubmit={handleSubmit}>
         <h2>Donor Login</h2>
 
-          {/* Message Display */}
-       {message && (
-          <p className={`message ${messageType}`}>{message}</p>
-        )}
-        
-      
+        {/* Message Display */}
+        {message && <p className={`message ${messageType}`}>{message}</p>}
 
         <label htmlFor="username">Username</label>
         <input
