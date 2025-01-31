@@ -1,17 +1,17 @@
-.admin-container {
+.patient-container {
   width: 80%;
   margin: 30px auto;
   text-align: center;
 }
 
-.admin-table {
+.patient-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.admin-table th, .admin-table td {
+.patient-table th, .patient-table td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
@@ -19,17 +19,17 @@
 }
 
 /* Table Header Styling */
-.admin-table th {
+.patient-table th {
   background-color: #f4f4f4;
   font-weight: bold;
 }
 
 /* Hover Effect on Table Rows */
-.admin-table tbody tr {
+.patient-table tbody tr {
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.admin-table tbody tr:hover {
+.patient-table tbody tr:hover {
   background-color: rgba(0, 150, 255, 0.1);
   transform: scale(1.02);
 }
@@ -104,9 +104,16 @@ button {
   font-weight: bold;
 }
 
+/* Error Message Styling */
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-  .admin-container {
+  .patient-container {
     width: 95%;
   }
 
@@ -114,8 +121,12 @@ button {
     flex-direction: column;
   }
 
-  .admin-table th, .admin-table td {
+  .patient-table th, .patient-table td {
     font-size: 14px;
     padding: 8px;
+  }
+
+  .add-form input {
+    width: 100%;
   }
 }

@@ -1,121 +1,159 @@
 /* General styles */
 .background {
-    background-color: #341a1a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-  }
-  
-  .shape {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 120px;
-    height: 120px;
-    background-color: #923737;
-    border-radius: 50%;
-    animation: moveShapes 5s infinite;
-  }
-  
-  .shape:nth-child(2) {
-    top: 30%;
-    left: 70%;
-    animation-duration: 7s;
-  }
-  
-  @keyframes moveShapes {
-    0% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(50px, 50px);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }
-  
-  form {
-    background-color: whitesmoke;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 450px;
-    height: 350px;
-    z-index: 10;
-  }
-  
-  form h3 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 70%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  button {
-    width: 80%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Error Message Styles */
-  .error {
-    color: red;
-    font-size: 14px;
-    text-align: center;
-    margin-top: 10px;
-    animation: fadeOut 3s ease-out forwards; /* Error message fade out */
-  }
+  background-color: #341a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden; /* To prevent any overflow if animations extend */
+}
 
-  .message {
-  
-    font-size: 1rem;
-    margin-bottom: 10px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
+.shape {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 120px;
+  height: 120px;
+  background-color: #923737;
+  border-radius: 50%;
+  animation: moveShapes 5s infinite ease-in-out;
+}
+
+.shape:nth-child(2) {
+  top: 30%;
+  left: 70%;
+  animation-duration: 7s;
+}
+
+@keyframes moveShapes {
+  0% {
+    transform: translate(0, 0);
   }
-  
-  .message.success {
-    color: green;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
+  50% {
+    transform: translate(50px, 50px);
   }
-  
-  .message.error {
-    color: red;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+  100% {
+    transform: translate(0, 0);
   }
-  
-  
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+}
+
+form {
+  background-color: whitesmoke;
+  padding: 30px;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1), 0 12px 36px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  min-height: 350px;
+  z-index: 10;
+  animation: slideIn 0.5s ease-out;
+  position: relative;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
   }
-  
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #5a5a5a;
+  font-weight: 600;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+input {
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #4890e2;
+  box-shadow: 0 0 10px rgba(72, 144, 226, 0.8);
+  outline: none;
+}
+
+/* Button Styling with Hover Effects */
+button {
+  width: 96%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease, transform 0.1s ease; /* Add transition for smooth scaling effect */
+}
+
+button:hover {
+  background-color: #45a049;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px); /* Button raises slightly on hover */
+}
+
+button:active {
+  transform: scale(0.98); /* Button press effect */
+}
+
+/* Message Styles */
+.message {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.message.success {
+  color: green;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  color: red;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.message.success, .message.error {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
- import { useNavigate } from "react-router-dom"; // Import useNavigate
-import axios from "axios"; // Import axios
-import "../CSS/login.css";
+import React, { useState } from "react"; // For useState
+import { useNavigate } from "react-router-dom"; // For useNavigate
+import "../CSS/login.css"
+
+
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -9,12 +10,17 @@ const LoginForm = () => {
   const [message, setMessage] = useState(""); // Single state for all messages
   const [messageType, setMessageType] = useState(""); // Type of message ('success' or 'error')
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  // Hardcoded admin credentials
+  const adminUsername = "vaibhe@gmail.com";
+  const adminPassword = "123";
+
+  // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission
 
-    const passwordRegex = /^[a-zA-Z0-9]{6,}$/;
+    const passwordRegex = /^[a-zA-Z0-9]{2,}$/;
 
     if (!username || !password) {
       setMessage("Please fill in both fields.");
@@ -34,25 +40,21 @@ const LoginForm = () => {
 
     setMessage(""); // Clear any previous messages
 
-    const formData = { username, password };
-
-    try {
-      const response = await axios.post("http://localhost:8080/login", formData);
-
+    // Hardcoded validation check
+    if (username === adminUsername && password === adminPassword) {
       setMessage("Login successful!");
       setMessageType("success");
       setTimeout(() => setMessage(""), 1000);
 
-      console.log("Form submitted successfully:", response.data);
+      console.log("Form submitted successfully:");
+
+      // Redirect to the donors page upon successful login
+      navigate("/AdminDashBoard");
 
       // Clear form
       setUsername("");
       setPassword("");
-
-      // Redirect to dashboard or any other page
-      navigate("/Admins"); // Change "/dashboard" to your desired route
-    } catch (error) {
-      console.error("There was an error submitting the form!", error);
+    } else {
       setMessage("Invalid credentials. Please try again.");
       setMessageType("error");
       setTimeout(() => setMessage(""), 3000);
@@ -65,7 +67,7 @@ const LoginForm = () => {
       <div className="shape"></div>
 
       <form onSubmit={handleSubmit}>
-        <h2>Donor Login</h2>
+        <h2>Admin Login</h2>
 
         {/* Message Display */}
         {message && <p className={`message ${messageType}`}>{message}</p>}

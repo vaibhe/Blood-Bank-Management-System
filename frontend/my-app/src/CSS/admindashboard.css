@@ -1,0 +1,79 @@
+/* Sidebar Container */
+.sidebar {
+    width: 16rem; /* 64px */
+    height: 43rem;
+    background-color: #c7b0b0; /* White background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 1.5rem; /* Padding inside the sidebar */
+  }
+  
+  /* Logo Section */
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sidebar-logo img {
+    width: 2rem; /* 32px */
+    height: 2rem; /* 32px */
+    margin-right: 0.5rem; /* Spacing between image and text */
+  }
+  
+  .sidebar-logo h1 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: bold;
+    color: #9b111e; /* Red color for the logo */
+  }
+  
+  /* Section Divider */
+  .sidebar-divider {
+    border: none;
+    border-top: 1px solid #e5e7eb; /* Light gray color */
+    margin: 1rem 0;
+  }
+  
+  /* Section Headers */
+  .sidebar-section-title {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600; /* Semi-bold */
+    text-transform: uppercase; /* All caps */
+    color: #9b111e; /* Red text */
+    letter-spacing: 0.05em; /* Slightly spaced out */
+    margin-bottom: 0.5rem; /* Spacing below title */
+  }
+  
+  /* Navigation Links */
+   li{
+    list-style:square;
+    font-size: 18px;
+   }
+
+   li:hover{
+    color: #b91c1c; 
+   }
+  
+  .sidebar-nav li {
+    margin-bottom: 0.5rem; /* Spacing between links */
+  }
+  
+  .sidebar-nav a {
+    display: block;
+    font-size: 1rem; /* 16px */
+    font-weight: 500; /* Medium font */
+    color: #4b5563; /* Gray color */
+    text-decoration: none; /* No underline */
+    transition: color 0.2s ease; /* Smooth color transition */
+  }
+  
+  .sidebar-nav a:hover {
+    color: #b91c1c; /* Dark red color on hover */
+  }
+  
+  /* Footer Divider */
+  .sidebar-footer-divider {
+    margin-top: 1rem;
+    border: none;
+    border-top: 1px solid #e5e7eb; /* Light gray color */
+  }
+  
