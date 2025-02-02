@@ -49,7 +49,7 @@ const LoginForm = () => {
       console.log("Form submitted successfully:");
 
       // Redirect to the donors page upon successful login
-      navigate("/AdminDashBoard");
+      navigate("/admindashBoard");
 
       // Clear form
       setUsername("");

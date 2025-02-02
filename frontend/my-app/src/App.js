@@ -6,6 +6,7 @@ import Login from './components/Login';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Patients from './components/Patients';
 import AdminDashboard from './components/AdminDashBoard';
+import Home from './components/Home';
 
 
 
@@ -13,40 +14,49 @@ import AdminDashboard from './components/AdminDashBoard';
 
 function App() {
   return (
-   
-   
-     <Routes classname="App">
 
-<Route path="/" element={<Login/>} />
+
+    <Routes classname="App">
+
       <Route
-       path="/AdminDashBoard"
-        element={
-         <AdminDashboard />     
-        }
-      />
-   
-  
-    <Route path="/" element={<Login/>} />
+       path="/"
+        element={<Home />} />
+
+
+
       <Route
-       path="/Patients"
+        path="/admindashBoard"
         element={
-         <Patients />     
+          <AdminDashboard />
         }
       />
 
-<Route path="/" element={<Login/>} />
+
       <Route
-       path="/donors"
+        path="/adminlogin"
+        element={<Login />}
+      />
+
+      <Route
+        path="/patients"
         element={
-         <Donors />     
+          <Patients />
         }
       />
-       
-     </Routes>
 
-   
+    
+      <Route
+        path="/donors"
+        element={
+          <Donors />
+        }
+      />
 
-   
+    </Routes>
+
+
+
+
 
 
   );
