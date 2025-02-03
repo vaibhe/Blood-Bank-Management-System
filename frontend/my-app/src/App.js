@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Patients from './components/Patients';
 import AdminDashboard from './components/AdminDashBoard';
 import Home from './components/Home';
+import DonateBloodForm from "./components/DonateBloodForm"
 
 
 
@@ -21,6 +22,12 @@ function App() {
       <Route
        path="/"
         element={<Home />} />
+
+        <Route
+          path="/donorregistration"
+          element={
+          <DonateBloodForm></DonateBloodForm>
+          } />
 
 
 
