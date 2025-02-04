@@ -1,8 +1,14 @@
 import React from "react";
 import "../CSS/form.css"; // Make sure this path matches your CSS file
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const DonateBloodForm = () => {
   return (
+    <div className="main-body">
+      <Navbar/>
+
+      <section className="hero">
     <div className="form-container">
       <h2>Register for Blood Donation</h2>
       <form>
@@ -40,6 +46,12 @@ const DonateBloodForm = () => {
           Submit
         </button>
       </form>
+    </div>
+    </section>
+
+
+    {/* This is my footer */}
+    <Footer></Footer>
     </div>
   );
 };

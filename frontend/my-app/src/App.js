@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 import Donors from './components/Donors';
@@ -8,6 +8,7 @@ import Patients from './components/Patients';
 import AdminDashboard from './components/AdminDashBoard';
 import Home from './components/Home';
 import DonateBloodForm from "./components/DonateBloodForm"
+
 
 
 
@@ -60,6 +61,7 @@ function App() {
       />
 
     </Routes>
+    
 
 
 

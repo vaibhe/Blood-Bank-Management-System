@@ -1,6 +1,10 @@
 import React, { useState } from "react"; // For useState
 import { useNavigate } from "react-router-dom"; // For useNavigate
 import "../CSS/login.css"
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+
 
 
 
@@ -63,6 +67,10 @@ const LoginForm = () => {
 
   return (
     <div className="background">
+      <Navbar/>
+    
+    
+
       <div className="shape"></div>
       <div className="shape"></div>
 
@@ -92,6 +100,12 @@ const LoginForm = () => {
         />
         <button type="submit">Log In</button>
       </form>
+      
+
+    
+
+      
+
     </div>
   );
 };
