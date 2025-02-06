@@ -23,13 +23,15 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-      <Link to="/">Home</Link>
+      <Link to="/">About us</Link>
 
         <Link className="donate-btn" to="/donorregistration">
           Donate Blood
         </Link>
         <Link to="/adminlogin">Admin Login</Link>
         <Link to="/">Need Blood</Link>
+        <Link to="/contact">Contact us</Link>
+
         <Link to="/host-blood-drive">Host Blood Drive</Link>
       </nav>
     </header>

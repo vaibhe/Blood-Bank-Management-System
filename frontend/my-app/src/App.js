@@ -8,6 +8,7 @@ import Patients from './components/Patients';
 import AdminDashboard from './components/AdminDashBoard';
 import Home from './components/Home';
 import DonateBloodForm from "./components/DonateBloodForm"
+import Contact from './components/Contact';
 
 
 
@@ -59,6 +60,12 @@ function App() {
           <Donors />
         }
       />
+
+<Route
+          path="/contact"
+          element={
+           <Contact/>
+          } />
 
     </Routes>
     

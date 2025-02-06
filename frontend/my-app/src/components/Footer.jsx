@@ -11,15 +11,15 @@ const Footer = () => {
           <p>Donate blood, save lives!</p>
         </div>
         <div className="footer-links">
-          <Link to="/">Home</Link>
-          <Link to="/donorregistration">Donate Blood</Link>
-          <Link to="/request-blood">Request Blood</Link>
-          <Link to="/host-blood-drive">Host Drive</Link>
-          <Link to="/contact">Contact</Link>
+         <p> <Link to="/">Home</Link> </p>
+         <p> <Link to="/donorregistration">Donate Blood</Link> </p>
+         <p> <Link to="/request-blood">Request Blood</Link> </p>
+         <p> <Link to="/host-blood-drive">Host Drive</Link> </p>
+        <p>  <Link to="/contact">Contact</Link> </p>
         </div>
         <div className="footer-contact">
-          <p>📞 +92-304-050-9060</p>
-          <p>📧 help@hemocell.com</p>
+          <p>📞 +91-304-050-9060</p>
+          <p>📧 help@bloodprism.com</p>
           <p>📍 Mumbai, India</p>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react"; // For useState
 import { useNavigate } from "react-router-dom"; // For useNavigate
 import "../CSS/login.css"
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+
 
 
 

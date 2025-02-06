@@ -1,16 +1,9 @@
-/* Global styles */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* Ensure full height */
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-}
+
 
 .container {
   flex: 1; /* Takes all available space except the footer */
-  display: flex;
-  flex-direction: column;
+  /* display: flex; 
+  flex-direction: column; */
 }
 
 /* Footer */
@@ -18,7 +11,7 @@ html, body {
   background-color: #111;
   color: #fff;
   padding: 40px 20px;
-  width: 100%;
+  width: 97.39%;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Elegant shadow */
 }
 
@@ -44,9 +37,10 @@ html, body {
 
 .footer-links,
 .footer-contact {
-  flex: 1;
+  flex: 1 ;
   margin-bottom: 20px;
 }
+
 
 .footer-links h3,
 .footer-contact h3 {
