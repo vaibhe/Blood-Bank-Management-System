@@ -29,21 +29,21 @@ const Patients = () => {
     setData(data.map(item => item.patientId === id ? { ...item, [name]: value } : item));
   };
 
-  const handleAdd = () => {
-    if (!Object.values(newItem).every(value => value.trim())) {
-      alert("All fields are required!");
-      return;
-    }
+  // const handleAdd = () => {
+  //   if (!Object.values(newItem).every(value => value.trim())) {
+  //     alert("All fields are required!");
+  //     return;
+  //   }
 
-    if (!window.confirm("Are you sure you want to add this patient?")) return;
+  //   if (!window.confirm("Are you sure you want to add this patient?")) return;
 
-    axios.post("http://localhost:8080/api/patients", newItem)
-      .then(() => {
-        fetchPatients();
-        setNewItem({ patientFullName: "", bloodGroup: "", gender: "", email: "", phoneNo: "", registration_Date: "" });
-      })
-      .catch((error) => console.error("Error adding patient!", error));
-  };
+  //   axios.post("http://localhost:8080/api/patients", newItem)
+  //     .then(() => {
+  //       fetchPatients();
+  //       setNewItem({ patientFullName: "", bloodGroup: "", gender: "", email: "", phoneNo: "", registration_Date: "" });
+  //     })
+  //     .catch((error) => console.error("Error adding patient!", error));
+  // };
 
   const handleSave = (patientId) => {
     if (!window.confirm("Are you sure you want to save changes?")) return;
@@ -96,7 +96,7 @@ const Patients = () => {
         </tbody>
       </table>
 
-      <h3>Add New Patient</h3>
+      {/* <h3>Add New Patient</h3>
       <div className="add-form">
         <input placeholder="Full Name" value={newItem.patientFullName} onChange={(e) => setNewItem({ ...newItem, patientFullName: e.target.value })} />
         <input placeholder="Blood Group" value={newItem.bloodGroup} onChange={(e) => setNewItem({ ...newItem, bloodGroup: e.target.value })} />
@@ -105,7 +105,7 @@ const Patients = () => {
         <input placeholder="Phone No" value={newItem.phoneNo} onChange={(e) => setNewItem({ ...newItem, phoneNo: e.target.value })} />
         <input placeholder="Registration Date" value={newItem.registration_Date} onChange={(e) => setNewItem({ ...newItem, registration_Date: e.target.value })} />
         <button onClick={handleAdd} className="add-btn">Add Patient</button>
-      </div>
+      </div> */}
     </div>
   );
 };

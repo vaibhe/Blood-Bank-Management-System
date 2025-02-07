@@ -57,3 +57,83 @@ body, html {
   }
 }
 
+
+/*  Tables */
+
+/* General table styling */
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.table {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.table:hover {
+  transform: scale(1.02);
+}
+
+th, td {
+  padding: 14px;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 1.2rem;
+  width: 33%;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Header styling */
+th {
+  background-color: red;
+  color: white;
+  font-size: 1.4rem;
+}
+
+/* Blood type text styling */
+td span {
+  color: #961e1b;
+  font-weight: bold;
+}
+
+/* Hover Effects */
+td:hover {
+  background-color: #f8d7da;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 5px;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    font-size: 0.8rem;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+}

@@ -29,31 +29,31 @@ const Donors = () => {
     setData(data.map(item => item.donorId === id ? { ...item, [name]: value } : item));
   };
 
-  const handleAdd = () => {
-    if (!newItem.donorFullName.trim() || !newItem.bloodGroup.trim() || !newItem.gender.trim() ||
-        !newItem.email.trim() || !newItem.phoneNo.trim() || !newItem.registration_Date.trim()) {
-      alert("All fields are required!");
-      return;
-    }
+  // const handleAdd = () => {
+  //   if (!newItem.donorFullName.trim() || !newItem.bloodGroup.trim() || !newItem.gender.trim() ||
+  //       !newItem.email.trim() || !newItem.phoneNo.trim() || !newItem.registration_Date.trim()) {
+  //     alert("All fields are required!");
+  //     return;
+  //   }
 
-    if (!window.confirm("Are you sure you want to add this donor?")) return;
+  //   if (!window.confirm("Are you sure you want to add this donor?")) return;
 
-    const newDonor = {
-      donorFullName: newItem.donorFullName.trim(),
-      bloodGroup: newItem.bloodGroup.trim(),
-      gender: newItem.gender.trim(),
-      email: newItem.email.trim(),
-      phoneNo: newItem.phoneNo.trim(),
-      registration_Date: newItem.registration_Date.trim(),
-    };
+  //   const newDonor = {
+  //     donorFullName: newItem.donorFullName.trim(),
+  //     bloodGroup: newItem.bloodGroup.trim(),
+  //     gender: newItem.gender.trim(),
+  //     email: newItem.email.trim(),
+  //     phoneNo: newItem.phoneNo.trim(),
+  //     registration_Date: newItem.registration_Date.trim(),
+  //   };
 
-    axios.post("http://localhost:8080/api/donors", newDonor)
-      .then(() => {
-        fetchDonors();
-        setNewItem({ donorFullName: "", bloodGroup: "", gender: "", email: "", phoneNo: "", registration_Date: "" });
-      })
-      .catch((error) => console.error("Error adding donor!", error));
-  };
+  //   axios.post("http://localhost:8080/api/donors", newDonor)
+  //     .then(() => {
+  //       fetchDonors();
+  //       setNewItem({ donorFullName: "", bloodGroup: "", gender: "", email: "", phoneNo: "", registration_Date: "" });
+  //     })
+  //     .catch((error) => console.error("Error adding donor!", error));
+  // };
 
   const handleSave = (donorId) => {
     if (!window.confirm("Are you sure you want to save changes?")) return;
@@ -131,7 +131,7 @@ const Donors = () => {
         </tbody>
       </table>
 
-      <h3>Add New Donor</h3>
+      {/* <h3>Add New Donor</h3>
       <div className="add-form">
         <input placeholder="Full Name" value={newItem.donorFullName} onChange={(e) => setNewItem({ ...newItem, donorFullName: e.target.value })} />
         <input placeholder="Blood Group" value={newItem.bloodGroup} onChange={(e) => setNewItem({ ...newItem, bloodGroup: e.target.value })} />
@@ -140,7 +140,7 @@ const Donors = () => {
         <input placeholder="Phone No" value={newItem.phoneNo} onChange={(e) => setNewItem({ ...newItem, phoneNo: e.target.value })} />
         <input placeholder="Registration Date" value={newItem.registration_Date} onChange={(e) => setNewItem({ ...newItem, registration_Date: e.target.value })} />
         <button onClick={handleAdd} className="add-btn">Add Donor</button>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -15,18 +15,20 @@ public class Donors {
      private String bloodGroup;
      private String gender;
      private String email;
+     private long quantity;
      private String phoneNo;
      private String registration_Date;
 
     public Donors() {
     }
 
-    public Donors(long donorId, String donorFullName, String bloodGroup, String gender, String email, String phoneNo, String registration_Date) {
+    public Donors(long donorId, String donorFullName, String bloodGroup, String gender, String email,long quantity, String phoneNo, String registration_Date) {
         this.donorId = donorId;
         this.donorFullName = donorFullName;
         this.bloodGroup = bloodGroup;
         this.gender = gender;
         this.email = email;
+        this.quantity = quantity;
         this.phoneNo = phoneNo;
         this.registration_Date = registration_Date;
     }
@@ -87,6 +89,14 @@ public class Donors {
         return registration_Date;
     }
 
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Donors{" +
@@ -95,6 +105,7 @@ public class Donors {
                 ", bloodGroup='" + bloodGroup + '\'' +
                 ", gender='" + gender + '\'' +
                 ", email='" + email + '\'' +
+                ", quantity=" + quantity +
                 ", phoneNo='" + phoneNo + '\'' +
                 ", registration_Date='" + registration_Date + '\'' +
                 '}';

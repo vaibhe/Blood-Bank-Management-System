@@ -1,6 +1,6 @@
 
 import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Donors from './components/Donors';
 import Login from './components/Login';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import AdminDashboard from './components/AdminDashBoard';
 import Home from './components/Home';
 import DonateBloodForm from "./components/DonateBloodForm"
 import Contact from './components/Contact';
+import PatientForm from './components/PatientForm';
 
 
 
@@ -22,14 +23,21 @@ function App() {
     <Routes classname="App">
 
       <Route
-       path="/"
+        path="/"
         element={<Home />} />
 
-        <Route
-          path="/donorregistration"
-          element={
+      <Route
+        path="/donorform"
+        element={
           <DonateBloodForm></DonateBloodForm>
-          } />
+        } />
+
+
+      <Route
+        path="/patientform"
+        element={
+        <PatientForm/>
+        } />
 
 
 
@@ -53,7 +61,7 @@ function App() {
         }
       />
 
-    
+
       <Route
         path="/donors"
         element={
@@ -61,14 +69,14 @@ function App() {
         }
       />
 
-<Route
-          path="/contact"
-          element={
-           <Contact/>
-          } />
+      <Route
+        path="/contact"
+        element={
+          <Contact />
+        } />
 
     </Routes>
-    
+
 
 
 
