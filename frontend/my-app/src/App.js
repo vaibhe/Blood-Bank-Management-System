@@ -10,6 +10,7 @@ import Home from './components/Home';
 import DonateBloodForm from "./components/DonateBloodForm"
 import Contact from './components/Contact';
 import PatientForm from './components/PatientForm';
+import BloodStocks from './components/BloodStocks';
 
 
 
@@ -68,6 +69,14 @@ function App() {
           <Donors />
         }
       />
+
+<Route
+        path="/bloodstocks"
+        element={
+          <BloodStocks></BloodStocks>
+        }
+      />
+
 
       <Route
         path="/contact"

@@ -1,80 +1,105 @@
-
-
-.donor_patient_registrationform_section{
-    background-color: #341a1a;
-    height: 124vh; 
+/* General Section Styling */
+.donor_patient_registrationform_section {
+    background: linear-gradient(135deg, #3b1d1d, #1a0d0d);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-
-
+/* Container Styling */
 .donor_patient_registrationform_section-container {
     width: 460px;
-    margin:  auto;
-    
-    padding: 20px;
-  
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 30px;
     text-align: center;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .donor_patient_registrationform_section-container h2 {
     color: #fff;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-
-.donor_patient_registrationform_section-container form{
+/* Form Styling */
+.donor_patient_registrationform_section-container form {
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 2px 13px 12px 15px rgba(228, 159, 159, 0.2);
-    transition: transform 0.3s ease-in-out;  
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
+
 .donor_patient_registrationform_section-container form:hover {
     transform: translateY(-5px);
 }
 
 .donor_patient_registrationform_section-container label {
     font-weight: bold;
+    display: block;
     margin-top: 10px;
+    color: #fff;
     text-align: left;
 }
 
-.donor_patient_registrationform_section-container input, select {
-    padding: 8px;
+.donor_patient_registrationform_section-container input,
+.donor_patient_registrationform_section-container select {
+    padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: none;
+    border-radius: 6px;
     width: 100%;
     font-size: 16px;
-}
-.donor_patient_registrationform_section-container input:focus, select:focus {
-    outline: none;
-    border-color: #d32f2f;
-    box-shadow: 0px 0px 5px rgba(211, 47, 47, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+    color: black;
+    transition: all 0.3s ease-in-out;
 }
 
+.donor_patient_registrationform_section-container input:focus,
+.donor_patient_registrationform_section-container select:focus {
+    outline: none;
+    border: 1px solid #ff4d4d;
+    box-shadow: 0px 0px 8px rgba(255, 77, 77, 0.7);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Button Styling */
 .donor_patient_registrationform_section-container button {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #d32f2f;
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, #ff4d4d, #b71c1c);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    transition: background 0.33s ease-in-out;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.donorform-container button:hover {
-    background-color: #b71c1c;
+.donor_patient_registrationform_section-container button:hover {
+    background: linear-gradient(135deg, #ff6666, #d32f2f);
+    transform: scale(1.05);
 }
 
+/* Responsive Design */
 @media (max-width: 500px) {
-    .form-container {
+    .donor_patient_registrationform_section-container {
         width: 90%;
-        padding: 15px;
+        padding: 20px;
     }
-
-    input, select, button {
+    
+    .donor_patient_registrationform_section-container input,
+    .donor_patient_registrationform_section-container select,
+    .donor_patient_registrationform_section-container button {
         font-size: 14px;
     }
 }

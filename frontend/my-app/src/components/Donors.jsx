@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../CSS/donor.css"; // Import CSS for styling
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Donors = () => {
   const [data, setData] = useState([]);
   const [editingId, setEditingId] = useState(null);
-  const [newItem, setNewItem] = useState({
-    donorFullName: "",
-    bloodGroup: "",
-    gender: "",
-    email: "",
-    phoneNo: "",
-    registration_Date: ""
-  });
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchDonors();
@@ -29,35 +24,8 @@ const Donors = () => {
     setData(data.map(item => item.donorId === id ? { ...item, [name]: value } : item));
   };
 
-  // const handleAdd = () => {
-  //   if (!newItem.donorFullName.trim() || !newItem.bloodGroup.trim() || !newItem.gender.trim() ||
-  //       !newItem.email.trim() || !newItem.phoneNo.trim() || !newItem.registration_Date.trim()) {
-  //     alert("All fields are required!");
-  //     return;
-  //   }
-
-  //   if (!window.confirm("Are you sure you want to add this donor?")) return;
-
-  //   const newDonor = {
-  //     donorFullName: newItem.donorFullName.trim(),
-  //     bloodGroup: newItem.bloodGroup.trim(),
-  //     gender: newItem.gender.trim(),
-  //     email: newItem.email.trim(),
-  //     phoneNo: newItem.phoneNo.trim(),
-  //     registration_Date: newItem.registration_Date.trim(),
-  //   };
-
-  //   axios.post("http://localhost:8080/api/donors", newDonor)
-  //     .then(() => {
-  //       fetchDonors();
-  //       setNewItem({ donorFullName: "", bloodGroup: "", gender: "", email: "", phoneNo: "", registration_Date: "" });
-  //     })
-  //     .catch((error) => console.error("Error adding donor!", error));
-  // };
-
   const handleSave = (donorId) => {
     if (!window.confirm("Are you sure you want to save changes?")) return;
-
     const updatedDonor = data.find(item => item.donorId === donorId);
 
     axios.put(`http://localhost:8080/api/donors`, updatedDonor)
@@ -73,9 +41,20 @@ const Donors = () => {
       .catch((error) => console.error("Error deleting donor!", error));
   };
 
+  const handleLogout = () => {
+    // Implement logout logic
+    alert("Admin logged out!");
+    navigate("/adminlogin"); 
+  };
+
   return (
     <div className="donor-container">
-      <h2>Donor Database</h2>
+      <div className="header">
+        <h2>Donor Database</h2>
+        <button onClick={handleLogout} className="logout-btn">
+           <Link to='/' style={{ textDecoration: "none", color: "white"}}> Admin Logout </Link>    
+          </button>
+      </div>
       <table className="donor-table">
         <thead>
           <tr>
@@ -130,17 +109,6 @@ const Donors = () => {
           ))}
         </tbody>
       </table>
-
-      {/* <h3>Add New Donor</h3>
-      <div className="add-form">
-        <input placeholder="Full Name" value={newItem.donorFullName} onChange={(e) => setNewItem({ ...newItem, donorFullName: e.target.value })} />
-        <input placeholder="Blood Group" value={newItem.bloodGroup} onChange={(e) => setNewItem({ ...newItem, bloodGroup: e.target.value })} />
-        <input placeholder="Gender" value={newItem.gender} onChange={(e) => setNewItem({ ...newItem, gender: e.target.value })} />
-        <input placeholder="Email" value={newItem.email} onChange={(e) => setNewItem({ ...newItem, email: e.target.value })} />
-        <input placeholder="Phone No" value={newItem.phoneNo} onChange={(e) => setNewItem({ ...newItem, phoneNo: e.target.value })} />
-        <input placeholder="Registration Date" value={newItem.registration_Date} onChange={(e) => setNewItem({ ...newItem, registration_Date: e.target.value })} />
-        <button onClick={handleAdd} className="add-btn">Add Donor</button>
-      </div> */}
     </div>
   );
 };

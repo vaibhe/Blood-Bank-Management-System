@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../CSS/patient.css"; // Import CSS for styling
+import  {useNavigate}  from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Patients = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [newItem, setNewItem] = useState({
@@ -29,6 +32,7 @@ const Patients = () => {
     setData(data.map(item => item.patientId === id ? { ...item, [name]: value } : item));
   };
 
+ 
   // const handleAdd = () => {
   //   if (!Object.values(newItem).every(value => value.trim())) {
   //     alert("All fields are required!");
@@ -63,9 +67,21 @@ const Patients = () => {
       .catch((error) => console.error("Error deleting patient!", error));
   };
 
+  const handleLogout = () => {
+    // Implement logout logic
+    alert("Admin logged out!");
+    navigate("/adminlogin"); 
+  };
+
+
   return (
     <div className="patient-container">
+       <div className="header">
       <h2>Patient Database</h2>
+      <button onClick={handleLogout} className="logout-btn">
+          <Link to="/"  style={{ textDecoration: "none", color: "white"}}>Admin Logout</Link>
+          </button>
+          </div>
       <table className="patient-table">
         <thead>
           <tr>

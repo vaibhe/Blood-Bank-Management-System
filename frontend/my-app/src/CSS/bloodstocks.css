@@ -1,73 +1,37 @@
-.donor-container {
+.bloodstock-container {
     width: 80%;
     margin: 30px auto;
     text-align: center;
   }
-
-
   
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .header h2{
-    font-size: 30px;
-    font-weight: 700;
-  }
-
-
-  
-  .logout-btn {
-    background-color: #ff4d4d;
-    color: white;
-    padding: 10px 15px;
-    width: 125px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .logout-btn:hover {
-    background-color: #cc0000;
-
-  }
-  
-  
-  .donor-table {
+  .bloodstock-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .donor-table th, .donor-table td {
+  .bloodstock-table th, .bloodstock-table td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
     transition: all 0.3s ease-in-out;
   }
   
-  /* Table Header Styling */
-  .donor-table th {
+  .bloodstock-table th {
     background-color: #d84a4a;
     font-weight: bold;
   }
   
-  /* Hover Effect on Table Rows */
-  .donor-table tbody tr {
+  .bloodstock-table tbody tr {
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
   }
   
-  .donor-table tbody tr:hover {
+  .bloodstock-table tbody tr:hover {
     background-color: rgba(0, 150, 255, 0.1);
     transform: scale(1.02);
   }
   
-  /* Button Styling */
   .button-group {
     display: flex;
     justify-content: center;
@@ -109,20 +73,14 @@
   .delete-btn:hover {
     background-color: #e57373;
   }
-
-
   
-
-  
-  /* Row Editing Highlight */
   .editing-row {
     background-color: rgba(255, 255, 0, 0.2);
     font-weight: bold;
   }
   
-  /* Responsive Design */
   @media (max-width: 768px) {
-    .donor-container {
+    .bloodstock-container {
       width: 95%;
     }
   
@@ -130,11 +88,9 @@
       flex-direction: column;
     }
   
-    .donor-table th, .donor-table td {
+    .bloodstock-table th, .bloodstock-table td {
       font-size: 14px;
       padding: 8px;
     }
-  
-    
   }
   

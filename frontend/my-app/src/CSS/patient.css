@@ -4,6 +4,33 @@
   text-align: center;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.logout-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 15px;
+  width: 125px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background-color: #cc0000;
+}
+
 .patient-table {
   width: 100%;
   border-collapse: collapse;
@@ -20,7 +47,7 @@
 
 /* Table Header Styling */
 .patient-table th {
-  background-color: #f4f4f4;
+  background-color: #d84a4a;
   font-weight: bold;
 }
 

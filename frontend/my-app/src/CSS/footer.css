@@ -15,6 +15,12 @@
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Elegant shadow */
 }
 
+.footer img{
+  height: 65px;
+  width: 65px;
+  margin-left: 60px;
+}
+
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -28,6 +34,8 @@
 
 .footer-brand h2 {
   color: #e74c3c;
+  font-weight: 200;
+  font-size: 30px;
 }
 
 .footer-brand p {
@@ -39,6 +47,7 @@
 .footer-contact {
   flex: 1 ;
   margin-bottom: 20px;
+
 }
 
 

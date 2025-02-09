@@ -1,14 +1,14 @@
 /* Main container */
 
-.container{
+.dashboard-container{
   display: flex;
 }
 
 
 /* Sidebar Container */
 .sidebar {
-    width: 16rem; /* 64px */
-    height: 43rem;
+    width: 20rem; 
+    height: 100vh;
     background-color: #c7b0b0; /* White background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     padding: 1.5rem; /* Padding inside the sidebar */
@@ -19,31 +19,32 @@
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
+   
   }
   
   .sidebar-logo img {
-    width: 2rem; /* 32px */
-    height: 2rem; /* 32px */
+    width: 55px;
+    height: 55px;
     margin-right: 0.5rem; /* Spacing between image and text */
   }
   
   .sidebar-logo h1 {
-    font-size: 1.5rem; /* 24px */
-    font-weight: bold;
+    font-size: 1.7rem; /* 24px */
+    font-weight: 700;
     color: #9b111e; /* Red color for the logo */
   }
   
   /* Section Divider */
   .sidebar-divider {
     border: none;
-    border-top: 1px solid #e5e7eb; /* Light gray color */
+    border-top: 2px solid #000000; /* Light gray color */
     margin: 1rem 0;
   }
   
   /* Section Headers */
   .sidebar-section-title {
-    font-size: 0.875rem; /* 14px */
-    font-weight: 600; /* Semi-bold */
+    font-size: 1.2rem; /* 14px */
+    font-weight: 700; /* Semi-bold */
     text-transform: uppercase; /* All caps */
     color: #9b111e; /* Red text */
     letter-spacing: 0.05em; /* Slightly spaced out */
@@ -66,9 +67,9 @@
   
   .sidebar-nav a {
     display: block;
-    font-size: 1rem; /* 16px */
+    font-size: 1.2rem; /* 16px */
     font-weight: 500; /* Medium font */
-    color: #4b5563; /* Gray color */
+    color: #000000; /* black color */
     text-decoration: none; /* No underline */
     transition: color 0.2s ease; /* Smooth color transition */
   }
@@ -81,7 +82,7 @@
   .sidebar-footer-divider {
     margin-top: 1rem;
     border: none;
-    border-top: 1px solid #e5e7eb; /* Light gray color */
+    border-top: 2px solid #000000;
   }
 
   .rightcontent {
@@ -97,7 +98,8 @@
 
 .dashboard-header h2 {
   color: gray;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
+ 
 }
 
 /* Stats Cards */
@@ -131,6 +133,12 @@
   width: 50px;
   height: 50px;
 }
+
+.stat-icon span{
+  font-size: 2.3rem;
+  color: #9b111e;
+}
+
 
 .stat-info h3 {
   font-size: 1rem;

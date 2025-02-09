@@ -7,10 +7,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class BloodStocks {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    @Id
     private String bloodType;
     private long quantity;
     private String registration_Date;
@@ -18,26 +16,10 @@ public class BloodStocks {
     public BloodStocks() {
     }
 
-    public BloodStocks(Long id, String bloodType, long quantity, String registration_Date) {
-        this.id = id;
+    public BloodStocks(String bloodType, long quantity, String registration_Date) {
         this.bloodType = bloodType;
         this.quantity = quantity;
         this.registration_Date = registration_Date;
-    }
-
-
-    public BloodStocks(String bloodGroup, long quantity,String registration_Date) {
-        this.bloodType = bloodGroup;
-        this.quantity = quantity;
-        this.registration_Date = registration_Date;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getBloodType() {
@@ -67,8 +49,7 @@ public class BloodStocks {
     @Override
     public String toString() {
         return "BloodStocks{" +
-                "id=" + id +
-                ", bloodType='" + bloodType + '\'' +
+                "bloodType='" + bloodType + '\'' +
                 ", quantity=" + quantity +
                 ", registration_Date='" + registration_Date + '\'' +
                 '}';

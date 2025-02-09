@@ -1,12 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../CSS/footer.css";
+import logo from "../images/prism_logo.png"
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-brand">
+        <img
+          src={logo}
+          alt="BloodPrism Logo"
+         
+        
+         
+        />
           <h2>Blood Prism</h2>
           <p>Donate blood, save lives!</p>
         </div>

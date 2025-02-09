@@ -55,4 +55,28 @@ public class DonorsService {
           repo.deleteById(myId);
     }
 
+
+    // to get all stocks
+    public List<BloodStocks> getAllBloodStock() {
+        return  bloodstockrepo.findAll();
+    }
+
+    // to get the quantity of the stock of specific type
+    public Integer getBloodStockByType(String bloodType) {
+
+            return Math.toIntExact(bloodstockrepo.findById(bloodType)
+                    .map(BloodStocks::getQuantity)
+                    .orElse(null));
+
+    }
+
+
+    // update the stock method
+    public BloodStocks findBloodStockByType(String bloodType) {
+        return bloodstockrepo.findByBloodType(bloodType);
+    }
+
+
+
+
 }
