@@ -10,7 +10,7 @@ public class Donors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name = "user_seq", sequenceName = "user_sequence", initialValue = 100, allocationSize = 1)
-    private long donorId;
+private long donorId;
      private String donorFullName;
      private String bloodGroup;
      private String gender;

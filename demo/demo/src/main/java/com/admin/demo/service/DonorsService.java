@@ -19,15 +19,19 @@ public class DonorsService {
     @Autowired
     BloodStocksRepository bloodstockrepo;
 
+
+// get all donors
     public List<Donors> getallDonors(){
          return repo.findAll();
     }
 
+    // get one donors
     public Donors getOneDonors(long myId){
         return  repo.findById(myId).orElse(new Donors());
     }
 
 
+    // insert
     public void addDonor(Donors donor){
         repo.save(donor);
 
@@ -46,6 +50,7 @@ public class DonorsService {
 
     }
 
+    // put method / update
     public  void updateDonor(Donors donor){
         repo.save(donor);
     }
@@ -55,6 +60,9 @@ public class DonorsService {
           repo.deleteById(myId);
     }
 
+
+
+    //=========================================
 
     // to get all stocks
     public List<BloodStocks> getAllBloodStock() {

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../CSS/bloodstocks.css"; // Import CSS for styling
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BloodStocks = () => {
   const [data, setData] = useState([]);
   const [editingId, setEditingId] = useState(null);
+  const navigate = useNavigate();
+
+  // acts as id for put/delete method
+  const bloodTypes = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
 
   useEffect(() => {
     fetchBloodStocks();
@@ -15,7 +21,7 @@ const BloodStocks = () => {
       .get("http://localhost:8080/api/bloodstocks")
       .then((response) => {
         const formattedData = response.data.map((item, index) => ({
-          stockId: item.stockId || index + 1, // Ensure unique ID
+
           bloodType: item.bloodType,
           quantity: item.quantity,
           registrationDate: item.registration_Date || "N/A",
@@ -29,16 +35,16 @@ const BloodStocks = () => {
 
   const handleChange = (e, id) => {
     const { name, value } = e.target;
-    setData(data.map(item => item.stockId === id ? { ...item, [name]: value } : item));
+    setData(data.map(item => item.bloodType === id ? { ...item, [name]: value } : item));
   };
 
-  const handleSave = (stockId) => {
+  const handleSave = (bloodType) => {
     if (!window.confirm("Are you sure you want to save changes?")) return;
 
-    const updatedStock = data.find(item => item.stockId === stockId);
+    const updatedStock = data.find(item => item.bloodType === bloodType);
 
     axios
-      .put(`http://localhost:8080/api/bloodstocks/${stockId}`, updatedStock) // Fixed API endpoint
+      .put(`http://localhost:8080/api/bloodstocks/${bloodType}`, updatedStock) // Fixed API endpoint
       .then(() => {
         setEditingId(null);
         fetchBloodStocks(); // Refresh data after update
@@ -46,18 +52,38 @@ const BloodStocks = () => {
       .catch((error) => console.error("Error updating blood stock!", error));
   };
 
-  const handleDelete = (stockId) => {
+  const handleDelete = (bloodType) => {
     if (!window.confirm("Are you sure you want to delete this blood stock record? This action cannot be undone!")) return;
 
     axios
-      .delete(`http://localhost:8080/api/bloodstocks/${stockId}`)
+      .delete(`http://localhost:8080/api/bloodstocks/${bloodType}`)
       .then(() => fetchBloodStocks())
       .catch((error) => console.error("Error deleting blood stock!", error));
   };
 
+
+  const handleLogout = () => {
+    alert("Admin will log out!");
+    navigate("/adminlogin");
+  };
+
+  const handlebackToDasBoard = () => {
+
+    alert("Admin will back to DashBoard!");
+    navigate("/admindashBoard");
+  };
+
   return (
     <div className="bloodstock-container">
+      <div className="header">
       <h2>Blood Stock Database</h2>
+      <button onClick={handlebackToDasBoard} className="backTodashboard-btn">
+        <Link to='/' style={{ textDecoration: "none", color: "white" }}>Back</Link>
+      </button>
+      <button onClick={handleLogout} className="logout-btn">
+        <Link to='/' style={{ textDecoration: "none", color: "white" }}> Admin Logout </Link>
+      </button>
+      </div>
       <table className="bloodstock-table">
         <thead>
           <tr>
@@ -69,22 +95,22 @@ const BloodStocks = () => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.stockId} className={editingId === item.stockId ? "editing-row" : ""}>
+            <tr key={item.bloodType} className={editingId === item.bloodType ? "editing-row" : ""}>
               <td>{item.bloodType}</td>
               <td>
-                {editingId === item.stockId ? (
+                {editingId === item.bloodType ? (
                   <input
                     name="quantity"
                     type="number"
                     value={item.quantity}
-                    onChange={(e) => handleChange(e, item.stockId)}
+                    onChange={(e) => handleChange(e, item.bloodType)}
                   />
                 ) : (
                   item.quantity
                 )}
               </td>
               <td>
-                {editingId === item.stockId ? (
+                {editingId === item.bloodType ? (
                   <input
                     name="registrationDate"
                     type="date"
@@ -93,7 +119,7 @@ const BloodStocks = () => {
                         ? new Date(item.registrationDate).toISOString().split("T")[0]
                         : ""
                     }
-                    onChange={(e) => handleChange(e, item.stockId)}
+                    onChange={(e) => handleChange(e, item.bloodType)}
                   />
                 ) : (
                   item.registrationDate !== "N/A"
@@ -103,12 +129,12 @@ const BloodStocks = () => {
               </td>
               <td>
                 <div className="button-group">
-                  {editingId === item.stockId ? (
-                    <button onClick={() => handleSave(item.stockId)} className="save-btn">Save</button>
+                  {editingId === item.bloodType ? (
+                    <button onClick={() => handleSave(item.bloodType)} className="save-btn">Save</button>
                   ) : (
-                    <button onClick={() => setEditingId(item.stockId)} className="edit-btn">Edit</button>
+                    <button onClick={() => setEditingId(item.bloodType)} className="edit-btn">Edit</button>
                   )}
-                  <button onClick={() => handleDelete(item.stockId)} className="delete-btn">Delete</button>
+                  <button onClick={() => handleDelete(item.bloodType)} className="delete-btn">Delete</button>
                 </div>
               </td>
             </tr>

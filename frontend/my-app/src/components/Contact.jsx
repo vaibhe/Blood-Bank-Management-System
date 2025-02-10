@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
-import Navbar from './Navbar';
+import React, { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
+import Navbar from "./Navbar";
 import "../CSS/contact.css";
-import Footer from './Footer';
+import Footer from "./Footer";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    reason: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    reason: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({
-    email: '',
-    phone: ''
+    email: "",
+    phone: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [state, handleSubmit] = useForm("mldglppj"); //
 
   const validateEmail = (email) => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
   };
 
@@ -33,24 +35,47 @@ const Contact = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    if (name === 'email') {
-      setErrors({ ...errors, email: validateEmail(value) ? '' : 'Invalid email format' });
+    if (name === "email") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: validateEmail(value) ? "" : "Invalid email format",
+      }));
     }
 
-    if (name === 'phone') {
-      setErrors({ ...errors, phone: validatePhone(value) ? '' : 'Phone must be 10 digits' });
+    if (name === "phone") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        phone: validatePhone(value) ? "" : "Phone must be 10 digits",
+      }));
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleFormSubmit = (e) => {
+  e.preventDefault();
 
-    if (!errors.email && !errors.phone && formData.name && formData.reason && formData.message) {
+  // Revalidate before submitting
+  const isEmailValid = validateEmail(formData.email);
+  const isPhoneValid = validatePhone(formData.phone);
+
+  setErrors({
+    email: isEmailValid ? "" : "Invalid email format",
+    phone: isPhoneValid ? "" : "Phone must be 10 digits",
+  });
+
+  if (isEmailValid && isPhoneValid && formData.name && formData.reason && formData.message) {
+    console.log("Form Data Submitted:", formData); // ✅ Logs user inputs
+
+    // Submit to Formspree
+    handleSubmit(e);  // ✅ No need to await
+
+    if (state.succeeded) {  // ✅ Check state after submission
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', reason: '', message: '' });
+      setFormData({ name: "", email: "", phone: "", reason: "", message: "" });
       setTimeout(() => setIsSubmitted(false), 3000);
     }
-  };
+  }
+};
+
 
   return (
     <div className="main-body">
@@ -64,12 +89,13 @@ const Contact = () => {
 
         {isSubmitted && <p className="success-message">Form submitted successfully!</p>}
 
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form" onSubmit={handleFormSubmit}>
           <div className="form-row">
             <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
           </div>
           {errors.email && <p className="error-text">{errors.email}</p>}
+          <ValidationError prefix="Email" field="email" errors={state.errors} />
 
           <div className="form-row">
             <input type="text" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} required />
@@ -78,8 +104,11 @@ const Contact = () => {
           {errors.phone && <p className="error-text">{errors.phone}</p>}
 
           <textarea placeholder="Any other information..." name="message" value={formData.message} onChange={handleChange} required></textarea>
+          <ValidationError prefix="Message" field="message" errors={state.errors} />
 
-          <button type="submit" disabled={errors.email || errors.phone}>Send Message</button>
+          <button type="submit" disabled={state.submitting || errors.email || errors.phone}>
+            {state.submitting ? "Sending..." : "Send Message"}
+          </button>
         </form>
       </div>
 

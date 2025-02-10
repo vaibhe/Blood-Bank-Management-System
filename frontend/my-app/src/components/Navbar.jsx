@@ -31,7 +31,7 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link to="/">About us</Link>
+        <Link to="/">Home</Link>
 
         <Link className="donate-btn" to="/donorform">
           Donate Blood

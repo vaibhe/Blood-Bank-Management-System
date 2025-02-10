@@ -59,15 +59,15 @@ const AdminDashBoard = () => {
         <hr className="sidebar-divider" />
         <nav>
           <h2 className="sidebar-section-title">Resources</h2>
+
           <ul className="sidebar-nav">
-            {["Landing Page", "Dashboard"].map((item, index) => (
-              <li key={index}><a href="#">{item}</a></li>
-            ))}
+            <li><Link to="/hostdrive">Host Blood Drive</Link></li>
+            <li><Link to="/">Home</Link></li>
           </ul>
         </nav>
         <hr className="sidebar-footer-divider" />
         <nav>
-          <h2 className="sidebar-section-title">Resources</h2>
+          <h2 className="sidebar-section-title">Log-out</h2>
           <ul className="sidebar-nav">
             <li><a href="/" onClick={handleLogout}>Admin Logout</a></li>
           </ul>
@@ -87,7 +87,7 @@ const AdminDashBoard = () => {
               </div>
               <div className="stat-info">
                 <h2>{bloodStock[type] !== undefined ? bloodStock[type] : "Loading..."}</h2>
-                <p><span className="increase">2.19% </span> Since last month</p>
+                {/* <p><span className="increase">2.19% </span> Since last month</p> */}
               </div>
             </div>
           ))}

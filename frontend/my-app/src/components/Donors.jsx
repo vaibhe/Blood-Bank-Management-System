@@ -41,16 +41,25 @@ const Donors = () => {
       .catch((error) => console.error("Error deleting donor!", error));
   };
 
+  
   const handleLogout = () => {
-    // Implement logout logic
-    alert("Admin logged out!");
+    alert("Admin will log out!");
     navigate("/adminlogin"); 
+  };
+
+  const handlebackToDasBoard = () => {
+    
+    alert("Admin will back to DashBoard!");
+    navigate("/admindashBoard"); 
   };
 
   return (
     <div className="donor-container">
       <div className="header">
         <h2>Donor Database</h2>
+        <button onClick={handlebackToDasBoard} className="backToDashboard-btn">
+          <Link to='/' style={{ textDecoration: "none", color: "white"}}>Back</Link>
+          </button>
         <button onClick={handleLogout} className="logout-btn">
            <Link to='/' style={{ textDecoration: "none", color: "white"}}> Admin Logout </Link>    
           </button>

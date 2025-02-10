@@ -22,12 +22,12 @@ const Footer = () => {
          <p> <Link to="/">Home</Link> </p>
          <p> <Link to="/donorform">Donate Blood</Link> </p>
          <p> <Link to="/patientform">Request Blood</Link> </p>
-         <p> <Link to="/host-blood-drive">Host Drive</Link> </p>
+         <p> <Link to="/hostdrive">Host Drive</Link> </p>
         <p>  <Link to="/contact">Contact</Link> </p>
         </div>
         <div className="footer-contact">
-          <p>📞 +91-304-050-9060</p>
-          <p>📧 help@bloodprism.com</p>
+          <p>📞 +91-9082811025</p>
+          <p>📧 bloodprism@gmail.com</p>
           <p>📍 Mumbai, India</p>
         </div>
       </div>

@@ -69,8 +69,14 @@ const Patients = () => {
 
   const handleLogout = () => {
     // Implement logout logic
-    alert("Admin logged out!");
+    alert("Admin will log out!");
     navigate("/adminlogin"); 
+  };
+
+  const handlebackToDasBoard = () => {
+    
+    alert("Admin will back to DashBoard!");
+    navigate("/admindashBoard"); 
   };
 
 
@@ -78,6 +84,11 @@ const Patients = () => {
     <div className="patient-container">
        <div className="header">
       <h2>Patient Database</h2>
+      <button onClick={handlebackToDasBoard} className="backToDashboard-btn">
+          <Link to='/' style={{ textDecoration: "none", color: "white"}}>Back</Link>
+          </button>
+
+
       <button onClick={handleLogout} className="logout-btn">
           <Link to="/"  style={{ textDecoration: "none", color: "white"}}>Admin Logout</Link>
           </button>

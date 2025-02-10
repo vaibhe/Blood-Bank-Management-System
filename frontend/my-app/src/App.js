@@ -11,6 +11,7 @@ import DonateBloodForm from "./components/DonateBloodForm"
 import Contact from './components/Contact';
 import PatientForm from './components/PatientForm';
 import BloodStocks from './components/BloodStocks';
+import HostBloodDrive from './components/HostBloodDrive';
 
 
 
@@ -37,7 +38,7 @@ function App() {
       <Route
         path="/patientform"
         element={
-        <PatientForm/>
+          <PatientForm />
         } />
 
 
@@ -70,10 +71,17 @@ function App() {
         }
       />
 
-<Route
+      <Route
         path="/bloodstocks"
         element={
           <BloodStocks></BloodStocks>
+        }
+      />
+
+      <Route
+        path="/hostdrive"
+        element={
+          <HostBloodDrive />
         }
       />
 

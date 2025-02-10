@@ -3,9 +3,10 @@ import { Carousel } from "react-bootstrap";
 import "../CSS/homepage.css"; // Import the CSS file
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
-import carousel_one from "../images/carousel_1.jpg"
+// import carousel_one from "../images/carousel_1.jpg"
 import carousel_two from "../images/carousel_2.jpg"
 import carousel_three from "../images/carousel_3.jpg"
+import blood_drop from "../images/blood_drop.png";
 import image from "../images/donate_blood.jpg"; 
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -120,7 +121,7 @@ const HomePage = () => {
 
         <Carousel>
           {/* <Carousel.Item>
-            <img className="d-block w-100" src={carousel_one} alt="First slide" style={{  height: "800px" }}
+            <img className="d-block w-100" src={carousel_one} alt="First slide" style={{  height: "600px" }}
             />
             <Carousel.Caption>
               <h3>First Slide Label</h3>
@@ -129,7 +130,7 @@ const HomePage = () => {
           </Carousel.Item> */}
 
           <Carousel.Item>
-            <img className="d-block w-100" src={carousel_two} alt="Second slide" style={{  height: "800px" }} />
+            <img className="d-block w-100" src={carousel_three} alt="Second slide" style={{  height: "800px" }} />
             <Carousel.Caption>
               <h3>Donate Blood </h3>
               <p>Sample description for the second slide.</p>
@@ -137,7 +138,7 @@ const HomePage = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img className="d-block w-100" src={carousel_three} alt="Third slide" style={{  height: "800px" }} />
+            <img className="d-block w-100" src={carousel_two} alt="Third slide" style={{  height: "800px" }} />
             <Carousel.Caption>
               <h3>Third Slide Label</h3>
               <p>Sample description for the third slide.</p>
@@ -149,7 +150,7 @@ const HomePage = () => {
       </section>
       <hr></hr>
 
-      <section className="hero">
+      <section className="hero-2">
       <div style={styles.container}>
       <h3 style={styles.headingSmall}>Donation Process</h3>
       <h2 style={styles.headingLarge}>Step-By-Step Guide To Donating Blood</h2>
@@ -228,11 +229,20 @@ const HomePage = () => {
     </div>
       </section>
 
-      <hr></hr>
+   
 
 
  
       <section className="donate-blood-section">
+     
+      {/* <img
+        src={blood_drop}
+        alt="Blood Drop"
+        className="drop-animate"
+        height={"130px"}
+      /> */}
+    
+   
       <div className="donate-blood-container">
         <div className="image-container">
           <img src={image} alt="Blood donation test tubes" />

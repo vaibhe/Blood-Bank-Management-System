@@ -66,6 +66,7 @@ public ResponseEntity<Integer> getBloodStockByType(@PathVariable String bloodTyp
 }
 
     @CrossOrigin(origins = "http://localhost:3000") // Allow only this origin
+
     @PutMapping("/bloodstocks/{bloodType}")
     public ResponseEntity<BloodStocks> updateBloodStockByType(@PathVariable String bloodType, @RequestBody BloodStocks updatedStock) {
         BloodStocks existingStock = service.findBloodStockByType(bloodType);
@@ -80,7 +81,7 @@ public ResponseEntity<Integer> getBloodStockByType(@PathVariable String bloodTyp
     }
 
 
-
+    
 
 
 }
