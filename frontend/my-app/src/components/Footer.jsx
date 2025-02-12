@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
         <div className="footer-contact">
           <p>📞 +91-9082811025</p>
-          <p>📧 bloodprism@gmail.com</p>
+          <p>📧 <a href="mailto:bloodprism25@gmail.com">bloodprism25@gmail.com</a></p>
           <p>📍 Mumbai, India</p>
         </div>
       </div>

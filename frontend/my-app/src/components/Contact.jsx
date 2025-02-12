@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import Navbar from "./Navbar";
 import "../CSS/contact.css";
@@ -19,7 +19,7 @@ const Contact = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [state, handleSubmit] = useForm("mldglppj"); //
+  const [state, handleSubmit] = useForm("xldgwjdn");
 
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -50,32 +50,31 @@ const Contact = () => {
     }
   };
 
-const handleFormSubmit = (e) => {
-  e.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-  // Revalidate before submitting
-  const isEmailValid = validateEmail(formData.email);
-  const isPhoneValid = validatePhone(formData.phone);
+    const isEmailValid = validateEmail(formData.email);
+    const isPhoneValid = validatePhone(formData.phone);
 
-  setErrors({
-    email: isEmailValid ? "" : "Invalid email format",
-    phone: isPhoneValid ? "" : "Phone must be 10 digits",
-  });
+    setErrors({
+      email: isEmailValid ? "" : "Invalid email format",
+      phone: isPhoneValid ? "" : "Phone must be 10 digits",
+    });
 
-  if (isEmailValid && isPhoneValid && formData.name && formData.reason && formData.message) {
-    console.log("Form Data Submitted:", formData); // ✅ Logs user inputs
+    if (isEmailValid && isPhoneValid && formData.name && formData.reason && formData.message) {
+      await handleSubmit(e); // Wait for Formspree submission
+    }
+  };
 
-    // Submit to Formspree
-    handleSubmit(e);  // ✅ No need to await
-
-    if (state.succeeded) {  // ✅ Check state after submission
+  // Watch for successful form submission
+  useEffect(() => {
+    if (state.succeeded) {
       setIsSubmitted(true);
       setFormData({ name: "", email: "", phone: "", reason: "", message: "" });
+
       setTimeout(() => setIsSubmitted(false), 3000);
     }
-  }
-};
-
+  }, [state.succeeded]);
 
   return (
     <div className="main-body">

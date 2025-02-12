@@ -88,8 +88,8 @@ const BloodStocks = () => {
         <thead>
           <tr>
             <th>Blood Type</th>
-            <th>Quantity (ml)</th>
-            <th>Registration Date</th>
+            <th>Quantity</th>
+            {/* <th>Registration Date</th> */}
             <th>Actions</th>
           </tr>
         </thead>
@@ -109,7 +109,7 @@ const BloodStocks = () => {
                   item.quantity
                 )}
               </td>
-              <td>
+              {/* <td>
                 {editingId === item.bloodType ? (
                   <input
                     name="registrationDate"
@@ -126,7 +126,7 @@ const BloodStocks = () => {
                     ? new Date(item.registrationDate).toISOString().split("T")[0]
                     : "N/A"
                 )}
-              </td>
+              </td> */}
               <td>
                 <div className="button-group">
                   {editingId === item.bloodType ? (

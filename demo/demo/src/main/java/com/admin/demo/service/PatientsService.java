@@ -1,5 +1,6 @@
 package com.admin.demo.service;
 
+import com.admin.demo.exception.ResourceNotFoundException;
 import com.admin.demo.model.Donors;
 import com.admin.demo.model.Patients;
 import com.admin.demo.repo.DonorsRepository;
@@ -21,7 +22,8 @@ public class PatientsService {
     }
 
     public Patients getOnePatient(long myId){
-        return  repo.findById(myId).orElse(new Patients());
+        return  repo.findById(myId).orElseThrow(() ->
+                new ResourceNotFoundException("Patient with ID " + myId + " not found"));
     }
 
     public void addPatient(Patients patient){
@@ -34,6 +36,9 @@ public class PatientsService {
 
 
     public void deleteOnePatient(long myId){
+        if (!repo.existsById(myId)) {
+            throw new ResourceNotFoundException("Patient with ID " + myId + " not found");
+        }
         repo.deleteById(myId);
     }
 }

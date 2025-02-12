@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 import "../CSS/homepage.css"; // Import the CSS file
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
-// import carousel_one from "../images/carousel_1.jpg"
+import carousel_one from "../images/carousel_1.jpg"
 import carousel_two from "../images/carousel_2.jpg"
 import carousel_three from "../images/carousel_3.jpg"
 import blood_drop from "../images/blood_drop.png";
@@ -129,21 +129,40 @@ const HomePage = () => {
             </Carousel.Caption>
           </Carousel.Item> */}
 
-          <Carousel.Item>
-            <img className="d-block w-100" src={carousel_three} alt="Second slide" style={{  height: "800px" }} />
-            <Carousel.Caption>
-              <h3>Donate Blood </h3>
-              <p>Sample description for the second slide.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
+<Carousel.Item>
+  <img
+    className="d-block w-100"
+    src={carousel_three}
+    alt="Second slide"
+    style={{ height: "800px" }}
+  />
+  <Carousel.Caption>
+    <h3 style={{ color: "black", fontSize: "2rem", fontWeight: "bold" }}>
+      Donate Blood 💉
+    </h3>
+    <p style={{ color: "black", fontSize: "1.2rem" }}>
+      Donate Blood Save Lives!!! 
+    </p>
+  </Carousel.Caption>
+</Carousel.Item>
 
-          <Carousel.Item>
-            <img className="d-block w-100" src={carousel_two} alt="Third slide" style={{  height: "800px" }} />
-            <Carousel.Caption>
-              <h3>Third Slide Label</h3>
-              <p>Sample description for the third slide.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
+<Carousel.Item>
+  <img
+    className="d-block w-100"
+    src={carousel_two}
+    alt="Third slide"
+    style={{ height: "800px" }}
+  />
+  <Carousel.Caption>
+    <h3 style={{ color: "black", fontSize: "2rem", fontWeight: "bold" }}>
+     "Give the Gift of Life" 🚑🩸
+    </h3>
+    <p style={{ color: "black", fontSize: "1.2rem" }}>
+    "Your blood is a gift of life—donate and make a difference."
+    </p>
+  </Carousel.Caption>
+</Carousel.Item>
+
         </Carousel>
 
 
@@ -234,8 +253,8 @@ const HomePage = () => {
 
  
       <section className="donate-blood-section">
-     
-      {/* <img
+{/*      
+      <img
         src={blood_drop}
         alt="Blood Drop"
         className="drop-animate"
@@ -244,11 +263,14 @@ const HomePage = () => {
     
    
       <div className="donate-blood-container">
+     
         <div className="image-container">
           <img src={image} alt="Blood donation test tubes" />
+          
         </div>
         <div className="content-container">
           <p className="subheading">DONATE BLOOD TODAY</p>
+          
           <h2 className="heading">Why Should You Donate Blood?</h2>
           <p className="description">
             Donating blood is a selfless act that has the power to save lives.

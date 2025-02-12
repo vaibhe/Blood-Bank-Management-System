@@ -165,6 +165,8 @@ td:hover {
 
 /* Why to donate blood section  */
 
+
+
 .donate-blood-section {
   display: flex;
   justify-content: center;
@@ -317,7 +319,9 @@ td:hover {
 
 .drop-animate{
  
-  position: absolute;
+  margin-bottom: 25rem;
+  margin-left: 3rem;
+  position: relative;
   z-index: 1;
   padding-bottom: 4rem;
 

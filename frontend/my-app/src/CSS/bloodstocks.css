@@ -79,7 +79,7 @@
 }
 
 button {
-  padding: 8px 15px;
+  padding: 10px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -88,6 +88,7 @@ button {
 }
 
 .edit-btn {
+
   background-color: #f9a825;
   color: white;
 }
@@ -97,6 +98,7 @@ button {
 }
 
 .save-btn {
+ 
   background-color: #4caf50;
   color: white;
 }
@@ -106,6 +108,7 @@ button {
 }
 
 .delete-btn {
+ 
   background-color: #d32f2f;
   color: white;
 }

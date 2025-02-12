@@ -1,5 +1,6 @@
 package com.admin.demo.service;
 
+import com.admin.demo.exception.ResourceNotFoundException;
 import com.admin.demo.model.BloodStocks;
 import com.admin.demo.model.Donors;
 import com.admin.demo.repo.BloodStocksRepository;
@@ -27,7 +28,8 @@ public class DonorsService {
 
     // get one donors
     public Donors getOneDonors(long myId){
-        return  repo.findById(myId).orElse(new Donors());
+        return  repo.findById(myId).orElseThrow(() ->
+                new ResourceNotFoundException("Donor with ID " + myId + "not found"));
     }
 
 
@@ -57,7 +59,11 @@ public class DonorsService {
 
 
     public void deleteOneDonor(long myId){
-          repo.deleteById(myId);
+        if (!repo.existsById(myId)) {
+            throw new ResourceNotFoundException("Donor with ID " + myId + " not found");
+        }
+        repo.deleteById(myId);
+
     }
 
 
