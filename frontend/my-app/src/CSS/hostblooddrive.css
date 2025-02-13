@@ -1,0 +1,97 @@
+.drive-container {
+    max-width: 1000px; /* Increased width */
+    margin: 100px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #343a40;
+}
+
+.camp-form {
+    display: grid;
+    margin: 15px auto;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 15px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.camp-form input,
+.camp-form textarea,
+.camp-form button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+/* Make the textarea span two columns */
+.camp-form textarea {
+    grid-column: span 2; /* Takes the full row width */
+}
+
+/* Submit button spans full row */
+.camp-form button {
+    grid-column: span 2; /* Takes the full row width */
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.camp-form button:hover {
+    background-color: #0056b3;
+}
+
+.camp-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.camp-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.camp-list button {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.camp-list button:nth-child(2) {
+    background-color: #dc3545;
+}
+
+.camp-list button:hover {
+    opacity: 0.9;
+}
+
+/* Responsive Design: Single column for smaller screens */
+@media (max-width: 768px) {
+    .camp-form {
+        grid-template-columns: 1fr; /* Switch to single column for small screens */
+    }
+
+    .camp-form textarea,
+    .camp-form button {
+        grid-column: span 1;
+    }
+}

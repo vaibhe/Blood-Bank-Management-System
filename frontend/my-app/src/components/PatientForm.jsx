@@ -63,10 +63,12 @@ const PatientForm = () => {
     <section className="donor_patient_registrationform_section">
 
     <div className="donor_patient_registrationform_section-container">
+
+    <div className="shape1"></div>
+    <div className="shape1"></div>
             <h2>Patient Registration Form</h2>
 
-            {/* <div className="shape"></div>
-            <div className="shape"></div> */}
+           
 
 
 

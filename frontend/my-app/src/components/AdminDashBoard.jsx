@@ -36,6 +36,8 @@ const AdminDashBoard = () => {
     e.preventDefault();
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
+       // Clear user data from localStorage
+    localStorage.clear();
       navigate("/");
     }
   };

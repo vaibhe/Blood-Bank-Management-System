@@ -1,4 +1,3 @@
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Donors from './components/Donors';
@@ -12,6 +11,8 @@ import Contact from './components/Contact';
 import PatientForm from './components/PatientForm';
 import BloodStocks from './components/BloodStocks';
 import HostBloodDrive from './components/HostBloodDrive';
+import SignIn from './components/SignIn';
+import Register from './components/Register';
 
 
 
@@ -93,10 +94,22 @@ function App() {
           <Contact />
         } />
 
+
+
+
+<Route
+        path="/signin"
+        element={
+         <SignIn/>
+        } />
+
+<Route
+        path="/signup"
+        element={
+        <Register/>
+        } />
+
     </Routes>
-
-
-
 
 
 

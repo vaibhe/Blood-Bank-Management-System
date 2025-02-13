@@ -84,8 +84,8 @@ const DonateBloodForm = () => {
 
                     <h2> Donor Registration Form</h2>
 
-                    {/* <div className="shape"></div>
-            <div className="shape"></div> */}
+                    <div className="shape1"></div>
+                    <div className="shape1"></div>
 
 
 

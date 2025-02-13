@@ -3,10 +3,8 @@ import { Carousel } from "react-bootstrap";
 import "../CSS/homepage.css"; // Import the CSS file
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
-import carousel_one from "../images/carousel_1.jpg"
-import carousel_two from "../images/carousel_2.jpg"
-import carousel_three from "../images/carousel_3.jpg"
-import blood_drop from "../images/blood_drop.png";
+import carousel_two from "../images/carousel_2.jpg";
+import carousel_three from "../images/carousel_3.jpg";
 import image from "../images/donate_blood.jpg"; 
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -102,13 +100,6 @@ const HomePage = () => {
     alert("Want to donate blood ");
     navigate("/donorform"); 
   };
-
-
-
-
-
-
-
 
   return (
     <div className="homepage">
