@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../CSS/patient.css"; // Import CSS for styling
-import  {useNavigate}  from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Patients = () => {
@@ -32,7 +32,7 @@ const Patients = () => {
     setData(data.map(item => item.patientId === id ? { ...item, [name]: value } : item));
   };
 
- 
+
   // const handleAdd = () => {
   //   if (!Object.values(newItem).every(value => value.trim())) {
   //     alert("All fields are required!");
@@ -70,29 +70,30 @@ const Patients = () => {
   const handleLogout = () => {
     // Implement logout logic
     alert("Admin will log out!");
-    navigate("/adminlogin"); 
+    localStorage.clear();
+    navigate("/");
   };
 
   const handlebackToDasBoard = () => {
-    
+
     alert("Admin will back to DashBoard!");
-    navigate("/admindashBoard"); 
+    navigate("/admindashBoard");
   };
 
 
   return (
     <div className="patient-container">
-       <div className="header">
-      <h2>Patient Database</h2>
-      <button onClick={handlebackToDasBoard} className="backToDashboard-btn">
-          <Link to='/' style={{ textDecoration: "none", color: "white"}}>Back</Link>
-          </button>
+      <div className="header">
+        <h2>Patient Database</h2>
+        <button onClick={handlebackToDasBoard} className="backToDashboard-btn">
+          <Link to='/' style={{ textDecoration: "none", color: "white" }}>Back</Link>
+        </button>
 
 
-      <button onClick={handleLogout} className="logout-btn">
-          <Link to="/"  style={{ textDecoration: "none", color: "white"}}>Admin Logout</Link>
-          </button>
-          </div>
+        <button onClick={handleLogout} className="logout-btn">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>Admin Logout</Link>
+        </button>
+      </div>
       <table className="patient-table">
         <thead>
           <tr>

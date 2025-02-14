@@ -28,18 +28,50 @@ const Navbar = () => {
   };
 
   const renderLinks = () => {
-    if (userRole === "DONOR" || userRole === "PATIENT") {
+    if (userRole === "DONOR") {
       return (
         <>
           <span className="greeting">Hello, {username}!</span>
           <Link to="/">Home</Link>
+          <Link to="/donorform">Form </Link>
+          <Link to="/campdetails">Camp </Link>
           <Link to="/contact">Contact</Link>
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
         </>
       );
-    } else {
+    }
+
+    if (userRole === "PATIENT") {
+      return (
+        <>
+          <span className="greeting">Hello, {username}!</span>
+          <Link to="/">Home</Link>
+          <Link to="/patientform">Form </Link>
+          <Link to="/contact">Contact</Link>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </>
+      );
+    }
+
+    if (userRole === "ADMIN") {
+      return (
+        <>
+          <span className="greeting">Hello, {username}!</span>
+          {/* <Link to="/">Home</Link> */}
+          
+          <Link to="/admindashBoard">Back</Link>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </>
+      );
+    }
+    
+    else {
       // Default links for unauthenticated users
       return (
         <>

@@ -56,6 +56,7 @@ const DonateBloodForm = () => {
 
             if (response.status === 200) {
                 alert("Donor data added successfully!");
+               
                 setDonor({
                     donorFullName: "",
                     gender: "",
@@ -65,6 +66,7 @@ const DonateBloodForm = () => {
                     quantity: "",
                     registration_Date: new Date().toISOString().split("T")[0],
                 });
+                window.location.href = '/';
             }
         } catch (error) {
             alert("Error adding donor data: " + error.message);

@@ -13,6 +13,7 @@ import BloodStocks from './components/BloodStocks';
 import HostBloodDrive from './components/HostBloodDrive';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
+import CampsDetailsToDonors from './components/CampsDetailsToDonors'
 
 
 
@@ -42,6 +43,7 @@ function App() {
         element={
           <PatientForm />
         } />
+
 
 
 
@@ -109,7 +111,16 @@ function App() {
         <Register/>
         } />
 
+        <Route 
+        path="/campdetails"
+        element={
+          <CampsDetailsToDonors/>
+        }
+        />
+
     </Routes>
+
+
 
 
 

@@ -64,7 +64,8 @@ const BloodStocks = () => {
 
   const handleLogout = () => {
     alert("Admin will log out!");
-    navigate("/adminlogin");
+    localStorage.clear();
+    navigate("/");
   };
 
   const handlebackToDasBoard = () => {

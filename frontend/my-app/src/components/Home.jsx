@@ -98,7 +98,7 @@ const HomePage = () => {
   const handleNavigation = () => {
     // Implement  logic
     alert("Want to donate blood ");
-    navigate("/donorform"); 
+    navigate("/signup"); 
   };
 
   return (
@@ -276,7 +276,7 @@ const HomePage = () => {
             and cancer.
           </p>
           <button className="donate-button" onClick={handleNavigation}>
-           <Link to="/adminlogin" style={{ textDecoration: "none", color: "white"}}> Donate Now</Link> 
+           <Link to="/signup" style={{ textDecoration: "none", color: "white"}}> Donate Now</Link> 
             </button>
         </div>
       </div>
