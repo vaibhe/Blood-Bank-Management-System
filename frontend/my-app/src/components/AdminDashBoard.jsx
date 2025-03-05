@@ -21,7 +21,7 @@ const AdminDashBoard = () => {
         for (const type of bloodTypes) {
           const response = await axios.get(`${API_BASE_URL}/${type}`);
           stockData[type] = response.data; // Store each blood type's stock
-          console.log(stockData[type])
+          
         }
         setBloodStock(stockData);
       } catch (error) {

@@ -61,7 +61,7 @@ const Navbar = () => {
       return (
         <>
           <span className="greeting">Hello, {username}!</span>
-          {/* <Link to="/">Home</Link> */}
+          <Link to="/">Home</Link>
           
           <Link to="/admindashBoard">Back</Link>
           <button className="logout-button" onClick={handleLogout}>

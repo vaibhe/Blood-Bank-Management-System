@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../CSS/donor_patient_registrationform.css"; // Make sure this path matches your CSS file
+import "../CSS/donor_patient_registrationform.css"; 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -11,15 +11,29 @@ const PatientForm = () => {
         email: "",
         phoneNo: "",
         bloodGroup: "",
-        registration_Date: new Date().toISOString().split("T")[0], // Default to today
+        registration_Date: new Date().toISOString().split("T")[0],
     });
 
     const [bloodStocks, setBloodStocks] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
     useEffect(() => {
-        // Fetch blood stocks to check availability
-        axios
-            .get("http://localhost:8080/api/bloodstocks")
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            setPatient((prevPatient) => ({
+                ...prevPatient,
+                patientFullName: parsedUser.name || "",
+                email: parsedUser.email || "",
+                phoneNo: parsedUser.phoneNumber || "",
+            }));
+        }
+    }, []);
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/api/bloodstocks")
             .then((response) => {
                 setBloodStocks(response.data);
             })
@@ -30,61 +44,73 @@ const PatientForm = () => {
         setPatient({ ...patient, [e.target.name]: e.target.value });
     };
 
+    const sendSuccessEmail = async (email, name, date) => {
+        try {
+            await axios.post("http://localhost:8080/api/email/send", {
+                to: email,
+                subject: "Blood Request Confirmation",
+                message: `Hi ${name},\n\nYour blood request has been recorded on ${date}. Our team will contact you soon.\n\nBest Regards,\nBloodPrism Team`,
+            });
+            return true;
+        } catch (err) {
+            setError("Error sending confirmation email.");
+            return false;
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError("");
+        setSuccess("");
+        setLoading(true);
 
-        // Validation
-        if (!/^\S+@\S+\.\S+$/.test(patient.email)) {
-            alert("Please enter a valid email address.");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(patient.email)) {
+            setError("Please enter a valid email address.");
+            setLoading(false);
             return;
         }
 
         if (!/^\d{10}$/.test(patient.phoneNo)) {
-            alert("Please enter a valid 10-digit phone number.");
+            setError("Please enter a valid 10-digit phone number.");
+            setLoading(false);
             return;
         }
 
-        // Check blood stock availability
         const matchingStock = bloodStocks.find(
             (stock) => stock.bloodType === patient.bloodGroup && stock.quantity > 0
         );
 
-        if (matchingStock) {
-            alert(
-                `Stock is available for blood group ${patient.bloodGroup}. We will contact you soon!`
-            );
-          
-            window.location.href = '/';
-        } else {
-            alert(
-                `Sorry, stock is not available for blood group ${patient.bloodGroup}.`
-            );
-            window.location.href = '/';
-            return; // Stop the submission if stock is unavailable
+        if (!matchingStock) {
+            setError(`Sorry, stock is not available for blood group ${patient.bloodGroup}.`);
+            setLoading(false);
+            return;
         }
 
         try {
-            const response = await axios.post(
-                "http://localhost:8080/api/patients",
-                patient,
-                {
-                    headers: { "Content-Type": "application/json" },
-                }
-            );
+            const response = await axios.post("http://localhost:8080/api/patients", patient, {
+                headers: { "Content-Type": "application/json" },
+            });
 
             if (response.status === 200) {
-                alert("Patient registered successfully!");
-                setPatient({
-                    patientFullName: "",
-                    gender: "",
-                    email: "",
-                    phoneNo: "",
-                    bloodGroup: "",
-                    registration_Date: new Date().toISOString().split("T")[0],
-                });
+                const emailSent = await sendSuccessEmail(patient.email, patient.patientFullName, patient.registration_Date);
+
+                if (emailSent) {
+                    setSuccess("Patient registered successfully! Confirmation email sent.");
+                    setPatient({
+                        patientFullName: "",
+                        gender: "",
+                        email: "",
+                        phoneNo: "",
+                        bloodGroup: "",
+                        registration_Date: new Date().toISOString().split("T")[0],
+                    });
+                }
+                setTimeout(() => (window.location.href = "/"), 2000);
             }
         } catch (error) {
-            alert("Error registering patient: " + error.message);
+            setError("Error registering patient. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -94,27 +120,17 @@ const PatientForm = () => {
 
             <section className="donor_patient_registrationform_section">
                 <div className="donor_patient_registrationform_section-container">
-                    <div className="shape1"></div>
-                    <div className="shape1"></div>
                     <h2>Patient Registration Form</h2>
+
+                    {error && <div className="error-message">{error}</div>}
+                    {success && <div className="success-message">{success}</div>}
 
                     <form onSubmit={handleSubmit}>
                         <label>Full Name:</label>
-                        <input
-                            type="text"
-                            name="patientFullName"
-                            value={patient.patientFullName}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="text" name="patientFullName" value={patient.patientFullName} onChange={handleChange} required />
 
                         <label>Gender:</label>
-                        <select
-                            name="gender"
-                            value={patient.gender}
-                            onChange={handleChange}
-                            required
-                        >
+                        <select name="gender" value={patient.gender} onChange={handleChange} required>
                             <option value="">Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -122,32 +138,13 @@ const PatientForm = () => {
                         </select>
 
                         <label>Email:</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={patient.email}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="email" name="email" value={patient.email} onChange={handleChange} required />
 
                         <label>Phone No:</label>
-                        <input
-                            type="text"
-                            name="phoneNo"
-                            value={patient.phoneNo}
-                            onChange={handleChange}
-                            required
-                            pattern="\d{10}"
-                            title="Enter a 10-digit phone number"
-                        />
+                        <input type="text" name="phoneNo" value={patient.phoneNo} onChange={handleChange} required pattern="\d{10}" title="Enter a 10-digit phone number" />
 
                         <label>Blood Group:</label>
-                        <select
-                            name="bloodGroup"
-                            value={patient.bloodGroup}
-                            onChange={handleChange}
-                            required
-                        >
+                        <select name="bloodGroup" value={patient.bloodGroup} onChange={handleChange} required>
                             <option value="">Select Blood Group</option>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
@@ -160,15 +157,9 @@ const PatientForm = () => {
                         </select>
 
                         <label>Registration Date:</label>
-                        <input
-                            type="date"
-                            name="registration_Date"
-                            value={patient.registration_Date}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="date" name="registration_Date" value={patient.registration_Date} onChange={handleChange} required />
 
-                        <button type="submit">Register Patient</button>
+                        <button type="submit" disabled={loading}>{loading ? <div className="spinner"></div> : "Register Patient"}</button>
                     </form>
                 </div>
             </section>
