@@ -39,13 +39,13 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Apply custom CORS config
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/users/signup", 
-                    "/users/signin", 
-                    "/v*/api-doc*/**", 
+                    "/users/signup",
+                    "/users/signin",
+                    "/v*/api-doc*/**",
                     "/swagger-ui/**",
                             "/admins/**",
                         "/api/**"
-                ).permitAll()
+                ).permitAll()   // public endpoints
                 // Add other matchers or roles here
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
                     // if role is admin then it can access
